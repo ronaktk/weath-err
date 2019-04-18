@@ -11,7 +11,8 @@ const Index = () => {
 
         const iconStyle = {
           width: "200px",
-          heigth: "100%"
+          heigth: "100%",
+          marginRight: "-50px"
         }
         if(location === "" || temperature === "" || metric === "" || description === "" || icon === "") {
           return(
