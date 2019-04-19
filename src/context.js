@@ -26,9 +26,9 @@ export class Provider extends Component {
 
         const proxy = "https://cors-anywhere.herokuapp.com/"
 
-        axios.get(`${proxy}https://api.darksky.net/forecast/e3cca30922827008daaee4b67ecbcfab/${this.state.lat},${this.state.long}`)
+        axios.get(`${proxy}https://api.darksky.net/forecast/${process.env.REACT_APP_DS_KEY}/${this.state.lat},${this.state.long}`)
         .then(res => {
-          //console.log(res.data)
+          console.log(res.data)
           this.setState({
             temperature: res.data.currently.temperature,
             metric: 'F',
