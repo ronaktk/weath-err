@@ -28,7 +28,7 @@ export class Provider extends Component {
 
         axios.get(`${proxy}https://api.darksky.net/forecast/e3cca30922827008daaee4b67ecbcfab/${this.state.lat},${this.state.long}`)
         .then(res => {
-          console.log(res.data)
+          //console.log(res.data)
           this.setState({
             temperature: res.data.currently.temperature,
             metric: 'F',
@@ -45,9 +45,8 @@ export class Provider extends Component {
     axios.get(`https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${this.state.lat}%2C${this.state.long}%2C250&mode=retrieveAddresses&maxresults=1&gen=9&app_id=${process.env.REACT_APP_HERE_ID}&app_code=${process.env.REACT_APP_HERE_CODE}`)
     .then(res => {
       this.setState({
-        location: res.data.Response.View[0].Result[0].Location.Address.City
+        location: res.data.Response.View[0].Result[0].Location.Address.City + ', ' + res.data.Response.View[0].Result[0].Location.Address.State
       })
-      console.log(this.state)
     })
     .catch(err => console.log(err))
   }
@@ -60,4 +59,5 @@ export class Provider extends Component {
     )
   }
 }
+
 export const Consumer = Context.Consumer
